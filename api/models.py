@@ -15,8 +15,8 @@ class Task(models.Model):
     )
     title=models.CharField(max_length=255)
     description=models.TextField(blank=True)
-    status=models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
-    assigned_to=models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    status=models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending', db_index=True)
+    assigned_to=models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, db_index=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     
